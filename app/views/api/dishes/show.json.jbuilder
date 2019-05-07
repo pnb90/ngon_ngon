@@ -1,0 +1,1 @@
+json.partial! @dish, partial: "dish", as: :dish
