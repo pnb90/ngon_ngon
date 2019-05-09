@@ -8,7 +8,12 @@ class Api::RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(
                            name: params[:name],
-                           address: params[:address]
+                           address: params[:address],
+                           favorite: params[:favorite],
+                           visited: params[:visited],
+                           craving: params[:craving],
+                           comments: params[:comments],
+                           user_id: params[:user_id]
                            )
     if @restaurant.save
       render 'show.json.jbuilder'
@@ -26,7 +31,12 @@ class Api::RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
 
     @restaurant.name = params[:name] || @restaurant.name,
-    @restaurant.address = params[:address] || @restaurant.address
+    @restaurant.address = params[:address] || @restaurant.address,
+    @restaurant.favorite = params[:favorite] || @restaurant.favorite,
+    @restaurant.visited = params[:visited] || @restaurant.visited,
+    @restaurant.craving = params[:craving] || @restaurant.craving,
+    @restaurant.comments = params[:comments] || @restaurant.comments,
+    @restaurant.user_id = params[:user_id] || @restaurant.user_id
 
     if @restaurant.save
       render 'show.json.jbuilder'

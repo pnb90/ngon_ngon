@@ -1,0 +1,5 @@
+class DropUserRestaurants < ActiveRecord::Migration[5.2]
+  def change
+    drop_table :user_restaurants
+  end
+end

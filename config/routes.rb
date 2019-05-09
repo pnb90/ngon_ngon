@@ -22,5 +22,19 @@ Rails.application.routes.draw do
     post "/dishes" => "dishes#create"
     patch "/dishes/:id" => "dishes#update"
     delete "/dishes/:id" => "dishes#destroy"
+
+    get "/restaurant_dishes" => "restaurant_dishes#index"
+    get "/restaurant_dishes/:id" => "restaurant_dishes#show"
+    get "/restaurant_dishes/new" => "restaurant_dishes#new"
+    post "/restaurant_dishes" => "restaurant_dishes#create"
+    patch "/restaurant_dishes/:id" => "restaurant_dishes#update"
+    delete "/restaurant_dishes/:id" => "restaurant_dishes#destroy"
+
+    get "/reviews" => "reviews#index"
+    get "/reviews/:id" => "reviews#show"
+    get "/reviews/new" => "reviews#new"
+    post "/reviews" => "reviews#create"
+    patch "/reviews/:id" => "reviews#update"
+    delete "/reviews/:id" => "reviews#destroy"
   end
 end

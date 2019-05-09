@@ -1,0 +1,1 @@
+json.partial! @restaurant_dish, partial: "restaurant_dish", as: :restaurant_dish
