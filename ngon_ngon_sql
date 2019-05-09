@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
-<!-- Active URL: https://ondras.zarovi.cz/sql/demo/?keyword=default -->
+<!-- Active URL: https://ondras.zarovi.cz/sql/demo/ -->
 <sql>
 <datatypes db="mssql">
   <group color="rgb(238,238,170)" label="Integer">
@@ -53,7 +53,7 @@
     <type label="SQL Variant" quote="" sql="sql_variant" length="1" bytes="" note="Stores any datatype except text, ntext, image, timestamp"/>
     <type label="Uniqueidentifier" quote="" sql="uniqueidentifier" length="1" bytes="16" note="GUID"/>
   </group>
-</datatypes><table x="318" y="567" name="users">
+</datatypes><table x="585" y="594" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>tinyint</datatype>
 <default>NULL</default></row>
@@ -67,26 +67,42 @@
 <part>id</part>
 </key>
 </table>
-<table x="677" y="551" name="restaurants">
+<table x="853" y="642" name="restaurants">
 <row name="id" null="1" autoincrement="1">
 <datatype>tinyint</datatype>
 <default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>int</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <row name="name" null="1" autoincrement="0">
-<datatype>tinyint</datatype>
+<datatype>char</datatype>
 <default>NULL</default></row>
 <row name="address" null="1" autoincrement="0">
-<datatype>tinyint</datatype>
+<datatype>char</datatype>
 <default>NULL</default></row>
-<row name="menu" null="1" autoincrement="0">
-<datatype>tinyint</datatype>
+<row name="favorite?" null="1" autoincrement="0">
+<datatype>binary</datatype>
+<default>NULL</default></row>
+<row name="visited?" null="1" autoincrement="0">
+<datatype>binary</datatype>
+<default>NULL</default></row>
+<row name="craving?" null="1" autoincrement="0">
+<datatype>binary</datatype>
+<default>NULL</default></row>
+<row name="comments" null="1" autoincrement="0">
+<datatype>text</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1043" y="564" name="Dishes">
+<table x="1298" y="640" name="Dishes">
 <row name="id" null="1" autoincrement="1">
 <datatype>tinyint</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>char</datatype>
 <default>NULL</default></row>
 <row name="price" null="1" autoincrement="0">
 <datatype>money</datatype>
@@ -95,18 +111,9 @@
 <part>id</part>
 </key>
 </table>
-<table x="843" y="568" name="restaurant_dishes">
+<table x="1076" y="582" name="restaurant_dishes">
 <row name="id" null="1" autoincrement="1">
 <datatype>tinyint</datatype>
-<default>NULL</default></row>
-<row name="rating" null="1" autoincrement="0">
-<datatype>tinyint</datatype>
-<default>NULL</default></row>
-<row name="photos" null="1" autoincrement="0">
-<datatype>tinyint</datatype>
-<default>NULL</default></row>
-<row name="favorite?" null="1" autoincrement="0">
-<datatype>binary</datatype>
 <default>NULL</default></row>
 <row name="dish_id" null="1" autoincrement="0">
 <datatype>int</datatype>
@@ -116,37 +123,37 @@
 <datatype>int</datatype>
 <default>NULL</default><relation table="restaurants" row="id" />
 </row>
+<row name="favorite?" null="1" autoincrement="0">
+<datatype>binary</datatype>
+<default>NULL</default></row>
+<row name="craving?" null="1" autoincrement="0">
+<datatype>binary</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="466" y="555" name="user_restaurants">
+<table x="862" y="416" name="Review">
 <row name="id" null="1" autoincrement="1">
 <datatype>tinyint</datatype>
 <default>NULL</default></row>
-<row name="photos" null="1" autoincrement="0">
+<row name="user_id" null="1" autoincrement="0">
 <datatype>tinyint</datatype>
-<default>NULL</default></row>
-<row name="favorite?" null="1" autoincrement="0">
-<datatype>binary</datatype>
-<default>NULL</default></row>
-<row name="visited?" null="1" autoincrement="0">
-<datatype>binary</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="restaurant_dish_id" null="1" autoincrement="0">
+<datatype>tinyint</datatype>
+<default>NULL</default><relation table="restaurant_dishes" row="id" />
+</row>
 <row name="rating" null="1" autoincrement="0">
 <datatype>tinyint</datatype>
 <default>NULL</default></row>
-<row name="photos" null="1" autoincrement="0">
-<datatype>tinyint</datatype>
+<row name="comments" null="1" autoincrement="0">
+<datatype>text</datatype>
 <default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>int</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
-<row name="restaurant_id" null="1" autoincrement="0">
-<datatype>tinyint</datatype>
-<default>NULL</default><relation table="restaurants" row="id" />
-</row>
+<row name="photos" null="1" autoincrement="0">
+<datatype>text</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
