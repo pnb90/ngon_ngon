@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post "/sessions" => "sessions#create"
 
     get "/restaurants" => "restaurants#index"
+    get "/restaurants/data" => "restaurants#data"
     get "/restaurants/:id" => "restaurants#show"
     get "/restaurants/new" => "restaurants#new"
     post "/restaurants" => "restaurants#create"

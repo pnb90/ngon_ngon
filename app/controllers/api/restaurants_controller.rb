@@ -5,6 +5,19 @@ class Api::RestaurantsController < ApplicationController
     render 'index.json.jbuilder'
   end
 
+  def data
+    @data = HTTP
+      .auth("Bearer #{ENV["YELP_KEY"]}")
+      .get("https://api.yelp.com/v3/businesses/search",
+      params: {
+        categories: 'restaurants',
+        location: 'Chicago'
+      })
+      
+
+    render 'data.json.jbuilder'
+  end
+
   def create
     @restaurant = Restaurant.new(
                            name: params[:name],
