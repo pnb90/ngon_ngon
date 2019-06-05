@@ -14,8 +14,20 @@ class Api::RestaurantsController < ApplicationController
         location: 'Chicago'
       })
       
-
     render 'data.json.jbuilder'
+  end
+
+  def search
+    @search_data = HTTP
+      .auth("Bearer #{ENV["YELP_KEY"]}")
+      .get("https://api.yelp.com/v3/businesses/search",
+      params: {
+        terms: params[:backend_search],
+        categories: 'restaurants',
+        location: 'Chicago'
+      })
+      
+    render 'search_data.json.jbuilder'
   end
 
   def create

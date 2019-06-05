@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     get "/restaurants" => "restaurants#index"
     get "/restaurants/data" => "restaurants#data"
+    get "/restaurants/search" => "restaurants#search"
     get "/restaurants/:id" => "restaurants#show"
     get "/restaurants/new" => "restaurants#new"
     post "/restaurants" => "restaurants#create"
