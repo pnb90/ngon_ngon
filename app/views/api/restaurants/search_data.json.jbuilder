@@ -1,1 +1,1 @@
-json.search_data @search_data
+json.search_data @search_data.parse
